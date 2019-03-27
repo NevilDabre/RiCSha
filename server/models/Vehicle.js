@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-const vehicleSchema = new Schema({
+const VehicleSchema = new Schema({
     id:{
         type: String,
         required: true,
@@ -29,4 +29,4 @@ const vehicleSchema = new Schema({
     }
 });
 
-export default mongoose.model("Vehicle", vehicleSchema);
+export default mongoose.model("Vehicle", VehicleSchema);

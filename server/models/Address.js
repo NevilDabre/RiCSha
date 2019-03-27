@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-const RiderSchema = new Schema({
+const AddressSchema = new Schema({
     id: {
         type: String,
         required: true,
@@ -43,8 +43,13 @@ const RiderSchema = new Schema({
         type: String,
         required: false
     },
-    status: {
-        type: String
+    lat:{
+        type: String,
+        required: false
+    },
+    lng:{
+        type: String,
+        required: false
     },
     createAt: {
         type: Date,
@@ -56,4 +61,4 @@ const RiderSchema = new Schema({
     }
 });
 
-export default mongoose.model("Rider", RiderSchema);
+export default mongoose.model("Address", AddressSchema);

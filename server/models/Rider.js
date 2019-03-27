@@ -8,13 +8,13 @@ const RiderSchema = new Schema({
         required: true,
         unique: true
     },
-    ride_id:{
-        type: String,
-        required: true
+    ride:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Ride'
     },
-    rider_id:{
-        type: String,
-        required: true
+    user:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     },
     seats:{
         type: Integer,
@@ -26,7 +26,8 @@ const RiderSchema = new Schema({
         required: false
     },
     status:{
-        type: String                                                                                
+        type: String,
+        defaultValue:'accepted'                                                                               
     },
     createAt:{
         type: Date,

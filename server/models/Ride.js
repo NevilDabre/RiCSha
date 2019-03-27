@@ -1,15 +1,15 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-const vehicleSchema = new Schema({
+const RideSchema = new Schema({
     id:{
         type: String,
         required: true,
         unique: true
     },
-    userId:{
-        type: String,
-        required: true
+    user:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     },
     sourceAddressId:{
         type: String,
@@ -19,9 +19,9 @@ const vehicleSchema = new Schema({
         type: String,
         required: true
     },
-    vehicleId:{
-        type: String,
-        required: true
+    vehicle:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Vehicle'
     },
     type:{ //driver or rider
         type: String,
@@ -43,6 +43,11 @@ const vehicleSchema = new Schema({
         type: Date,
         required: false
     },
+    status:{
+        type: Date,
+        required: true,
+        defaultValue: 'open'
+    },
     createAt:{
         type: Date,
         required:false
@@ -53,4 +58,4 @@ const vehicleSchema = new Schema({
     }
 });
 
-export default mongoose.model("Vehicle", vehicleSchema);
+export default mongoose.model("Ride", RideSchema);

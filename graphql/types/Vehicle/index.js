@@ -2,10 +2,11 @@ export default `
     scalar Date
     type Vehicle {
         _id: String!
-        make: String!
+        make: String
         model: String
         licenseNumber: String
-        seats: Int!
+        seats: Int
+        color: String
         createdAt: Date
         updatedAt: Date
     }
@@ -25,13 +26,17 @@ export default `
         make: String!
         model: String
         licenseNumber: String
-        seats: Int!
+        seats: Int
+        color: String
+        createAt: Date
     }
 
     input UpdateVehicleInput {
         make: String!
         model: String
         licenseNumber: String
-        seats: Int!
+        seats: Int
+        color: String
+        updatedAt: Date
     }
     `;

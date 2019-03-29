@@ -28,6 +28,7 @@ export default `
         email: String!
         phone: Int
         picture: String
+        createdAt: Date
     }
 
     input UpdateUserInput {
@@ -36,5 +37,7 @@ export default `
         email: String
         phone: Int
         picture: String
+        updatedAt: Date
+
     }
     `;

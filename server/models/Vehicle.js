@@ -22,6 +22,11 @@ const VehicleSchema = new Schema({
     },
     seats:{
         type: Int,
+        required: true,
+        defaultValue: 4
+    },
+    color:{
+        type: String,
         required: false
     },
     createAt:{

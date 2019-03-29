@@ -2,8 +2,8 @@ import Rider from "../../../server/models/Rider";
 
 export default {
     Query: {
-        rider: async ( parent, {id}, context, info)=>{
-            return await Rider.findOne({ id }).exec();
+        rider: async ( parent, {_id}, context, info)=>{
+            return await Rider.findOne({ _id }).exec();
         },
         riders: async (parent, args, context, info) =>{
             const riders = await Rider.find({})
@@ -11,7 +11,7 @@ export default {
                 .exec()
 
             return riders.map(r=> ({
-                id: r.id.toString(),
+                _id: r._id.toString(),
                 ride: r.Ride,
                 user: r.User,
                 seats: r.seats,
@@ -24,8 +24,7 @@ export default {
     },
     Mutation: {
         createRider: async (parent , { rider }, context, info)=>{
-            const newRider = await new Rider({ 
-                id: rider.id,
+            const newRider = await new Rider({
                 ride: rider.Ride,
                 user: rider.User,
                 seats: rider.seats,
@@ -40,18 +39,18 @@ export default {
                 });
             });
         },
-        updateRider: async (parent, { id, rider }, context, info)=>{
+        updateRider: async (parent, { _id, rider }, context, info)=>{
             return new Promise((resolve, reject)=>{
-                Rider.findOneAndUpdate(id, { $set: { ...rider, updatedAt: new Date() } }, { new: true}).exec(
+                Rider.findOneAndUpdate(_id, { $set: { ...rider, updatedAt: new Date() } }, { new: true}).exec(
                     (err, res) =>{
                         err? reject(err): resolve(res);
                     }
                 );
             });
         },
-        deleteRider: async (parent, {id}, context, info) =>{
+        deleteRider: async (parent, {_id}, context, info) =>{
             return new Promise((resolve, reject)=>{
-                Rider.findByIdAndDelete(id).exec((err, res)=>{
+                Rider.findByIdAndDelete(_id).exec((err, res)=>{
                     err? reject(err): resolve(res);
                 })
             })

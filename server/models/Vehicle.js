@@ -1,22 +1,27 @@
 import mongoose from 'mongoose';
+import Int from 'mongoose-int32';
+import { ObjectID } from 'mongodb';
 const Schema = mongoose.Schema;
 
+ObjectID.prototype.valueOf = function(){
+    return this.toString();
+}
+
 const VehicleSchema = new Schema({
-    id:{
-        type: String,
-        required: true,
-        unique: true
-    },
     make:{
         type: String,
         required: true
     },
     model:{
         type:String,
-        required: true
+        required: false
     },
     licenseNumber:{
         type: String,
+        required: false
+    },
+    seats:{
+        type: Int,
         required: false
     },
     createAt:{

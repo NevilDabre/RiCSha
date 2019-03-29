@@ -1,34 +1,33 @@
 export default `
+    scalar Date
     type Rider {
-        id: String!
+        _id: String!
         ride: [Ride!]
         user: [User!]
         seats: Int!
         notes: String
         status: String!
-        createAt: scalar Date
-        updatedAt: scalar Date
+        createAt: Date
+        updatedAt: Date
     }
 
     type Query {
-        rider(id: ID!):Rider!
+        rider(_id: ID!):Rider!
         riders: [Rider!]!
     }
 
     type Mutation {
         createRider(rider: CreateRiderInput): Rider!
-        updateRider(id:String!, rider: UpdateRiderInput): Rider!
-        deleteRider(id: String!): Rider!
+        updateRider(_id:String!, rider: UpdateRiderInput): Rider!
+        deleteRider(_id: String!): Rider!
     }
 
     input CreateRiderInput {
-        id: String!
         ride: [Ride!]
         user: [User!]
         seats: Int!
         notes: String
         status: String!
-        createAt: scalar Date
     }
 
     input UpdateRiderInput {
@@ -37,6 +36,5 @@ export default `
         seats: Int!
         notes: String
         status: String!
-        updatedAt: scalar Date
     }
     `;

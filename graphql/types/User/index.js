@@ -1,34 +1,33 @@
 export default `
+    scalar Date
     type User {
-        id: String!
+        _id: String!
         firstName: String!
         lastName: String!
         email: String!
         phone: Int
         picture: String
-        createAt: scalar Date
-        updatedAt: scalar Date
+        createAt: Date
+        updatedAt: Date
     }
 
     type Query {
-        user(id: ID!):User!
+        user(_id: ID!):User!
         users: [User!]!
     }
 
     type Mutation {
         createUser(user: CreateUserInput): User!
-        updateUser(id:String!, user: UpdateUserInput): User!
-        deleteUser(id: String!): User!
+        updateUser(_id:String!, user: UpdateUserInput): User!
+        deleteUser(_id: String!): User!
     }
 
     input CreateUserInput {
-        id: String!
         firstName: String!
         lastName: String!
         email: String!
         phone: Int
         picture: String
-        createAt: scalar Date
     }
 
     input UpdateUserInput {
@@ -37,6 +36,5 @@ export default `
         email: String
         phone: Int
         picture: String
-        updatedAt: scalar Date
     }
     `;

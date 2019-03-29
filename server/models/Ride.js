@@ -1,23 +1,26 @@
+import Int from 'mongoose-int32';
+import { ObjectId } from 'mongodb';
 import mongoose from 'mongoose';
+import mongooseFloat from 'mongoose-float';
+const Float = mongooseFloat.loadType(mongoose);
 const Schema = mongoose.Schema;
 
+
+ObjectId.prototype.valueOf = function(){
+    return this.toString();
+}
 const RideSchema = new Schema({
-    id:{
-        type: String,
-        required: true,
-        unique: true
-    },
     user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    sourceAddressId:{
-        type: String,
-        required: true
+    sourceAddress:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Address'
     },
-    destinationAddressId:{
-        type: String,
-        required: true
+    destinationAddress:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Address'
     },
     vehicle:{
         type: mongoose.Schema.Types.ObjectId,
@@ -28,11 +31,11 @@ const RideSchema = new Schema({
         required: true
     },
     seats:{ //number of seats required for rider or driver
-        type: Integer,
+        type: Int,
         required: true
     },
     fare:{
-        type: Double,
+        type: Float,
         required: false
     },
     startDateTime:{
@@ -40,11 +43,11 @@ const RideSchema = new Schema({
         required: true
     },
     notes:{
-        type: Date,
+        type: String,
         required: false
     },
     status:{
-        type: Date,
+        type: String,
         required: true,
         defaultValue: 'open'
     },

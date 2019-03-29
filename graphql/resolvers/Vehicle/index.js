@@ -1,12 +1,12 @@
-import Address from "../../../server/models/Address";
+import Vehicle from "../../../server/models/Vehicle";
 
 export default {
     Query: {
-        address: async ( parent, {_id}, context, info)=>{
-            return await Address.findOne({ _id }).exec();
+        vehicle: async ( parent, {_id}, context, info)=>{
+            return await Vehicle.findOne({ _id }).exec();
         },
-        addresess: async (parent, args, context, info) =>{
-            const addresss = await Address.find({})
+        vehicles: async (parent, args, context, info) =>{
+            const addresss = await Vehicle.find({})
                 .populate()
                 .exec()
 

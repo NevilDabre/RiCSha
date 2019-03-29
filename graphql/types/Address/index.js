@@ -1,57 +1,61 @@
 export default `
+    scalar Date
     type Address {
-        id: String!
+        _id: String!
         placeId: String
+        formattedAddress: String
         streetAddress: String
         locality: String
         sublocality: String
-        administrative_area_level_1: String
-        administrative_area_level_2: String
-        postal_code: String
+        administrativeAreaLevel1: String
+        administrativeAreaLevel2: String
+        postalCode: String
         country: String
-        lat: String
-        lng: String
-        createAt: scalar Date
-        updatedAt: scalar Date
+        countryCode: String
+        lat: Float
+        lng: Float
+        createAt: Date
+        updatedAt: Date
     }
 
     type Query {
-        address(id: ID!):Address!
-        addressess: [Address!]
+        address(_id: ID!):Address!
+        addresess: [Address!]!
     }
 
     type Mutation {
         createAddress(address: CreateAddressInput): Address!
-        updateAddress(id:String!, address: UpdateAddressInput): Address!
-        deleteAddress(id: String!): Address!
+        updateAddress(_id:String!, address: UpdateAddressInput): Address!
+        deleteAddress(_id: String!): Address!
     }
 
     input CreateAddressInput {
-        id: String!
-        placeId: String
+        placeId: String!
+        formattedAddress: String
         streetAddress: String
         locality: String
         sublocality: String
-        administrative_area_level_1: String
-        administrative_area_level_2: String
-        postal_code: String
+        administrativeAreaLevel1: String
+        administrativeAreaLevel2: String
+        postalCode: String
         country: String
-        lat: String
-        lng: String
-        createAt: scalar Date
+        countryCode: String
+        lat: Float
+        lng: Float
     }
 
     input UpdateAddressInput {
-        placeId: String
+        placeId: String!
+        formattedAddress: String
         streetAddress: String
         locality: String
         sublocality: String
-        administrative_area_level_1: String
-        administrative_area_level_2: String
-        postal_code: String
+        administrativeAreaLevel1: String
+        administrativeAreaLevel2: String
+        postalCode: String
         country: String
-        lat: String
-        lng: String
-        updatedAt: scalar Date
+        countryCode: String
+        lat: Float
+        lng: Float
     }
     `;

@@ -1,13 +1,13 @@
+import Int from 'mongoose-int32';
 import mongoose from 'mongoose';
-//import { ObjectId } from 'mongodb'; 
+import { ObjectId } from 'mongodb'; 
 const Schema = mongoose.Schema;
 
+ObjectId.prototype.valueOf = function(){
+    return this.toString();
+}
+
 const UserSchema = new Schema({
-    id:{
-        type: String,
-        required: true,
-        unique: true
-    },
     firstName: {
         type: String,
         required: true
@@ -21,7 +21,7 @@ const UserSchema = new Schema({
         required: true
     },
     phone: {
-        type: NumberInt,
+        type: Int,
         required: false
     },
     picture:{

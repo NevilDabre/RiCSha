@@ -1,6 +1,11 @@
+import Int from 'mongoose-int32';
 import mongoose from 'mongoose';
-//import { ObjectId } from 'mongodb'; 
+import { ObjectId } from 'mongodb'; 
 const Schema = mongoose.Schema;
+
+ObjectId.prototype.valueOf = function(){
+    return this.toString();
+}
 
 const RiderSchema = new Schema({
     id:{
@@ -17,7 +22,7 @@ const RiderSchema = new Schema({
         ref: 'User'
     },
     seats:{
-        type: Integer,
+        type: Int,
         required: true,
         default: 1
     },

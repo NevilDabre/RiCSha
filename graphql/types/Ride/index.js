@@ -1,22 +1,23 @@
 export default `
+    sclar Date
     type Ride {
-        id: String!
+        _id: String!
         user: [User!]
-        sourceAddressId: String!
-        destinationAddressId: String!
-        vehicle: [Vehicle!]
+        sourceAddress: [Address!]
+        destinationAddress: [Address!]
+        vehicle: [Vehicle]
         type: String!
         seats: Int!
         fare: Float
-        startDateTime: scalar Date!
+        startDateTime: Date!
         notes: String
         status: String
-        createAt: scalar Date
-        updatedAt: scalar Date
+        createAt: Date
+        updatedAt: Date
     }
 
     type Query {
-        ride(id: ID!):Ride!
+        ride(_id: ID!):Ride!
         rides: [Ride!]
     }
 
@@ -27,31 +28,28 @@ export default `
     }
 
     input CreateRideInput {
-        id: String!
         user: [User!]
-        sourceAddressId: String!
-        destinationAddressId: String!
-        vehicle: [Vehicle!]
+        sourceAddress: [Address!]
+        destinationAddress: [Address!]
+        vehicle: [Vehicle]
         type: String!
         seats: Int!
         fare: Float
-        startDateTime: scalar Date!
+        startDateTime: Date!
         notes: String
         status: String
-        createAt: scalar Date
     }
 
     input UpdateRideInput {
         user: [User!]
-        sourceAddressId: String!
-        destinationAddressId: String!
-        vehicle: [Vehicle!]
+        sourceAddress: [Address!]
+        destinationAddress: [Address!]
+        vehicle: [Vehicle]
         type: String!
         seats: Int!
         fare: Float
-        startDateTime: scalar Date!
+        startDateTime: Date!
         notes: String
         status: String
-        updatedAt: scalar Date
     }
     `;

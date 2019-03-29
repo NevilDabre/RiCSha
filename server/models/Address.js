@@ -1,17 +1,22 @@
 import mongoose from 'mongoose';
+import {
+    ObjectID
+} from 'mongodb';
+import mongooseFloat from 'mongoose-float';
+const Float = mongooseFloat.loadType(mongoose);
+
 const Schema = mongoose.Schema;
 
+ObjectID.prototype.valueOf = function () {
+    return this.toString();
+}
+
 const AddressSchema = new Schema({
-    id: {
-        type: String,
-        required: true,
-        unique: true
-    },
     placeId: {
         type: String,
         required: false
     },
-    formatted_address: {
+    formattedAddress: {
         type: String,
         required: false
     },
@@ -27,15 +32,15 @@ const AddressSchema = new Schema({
         type: String,
         required: false
     },
-    administrative_area_level_1: {
+    administrativeAreaLevel1: {
         type: String,
         required: false
     },
-    administrative_area_level_2: {
+    administrativeAreaLevel2: {
         type: String,
         required: false
     },
-    postal_code: {
+    postalCode: {
         type: String,
         required: false
     },
@@ -43,12 +48,16 @@ const AddressSchema = new Schema({
         type: String,
         required: false
     },
-    lat:{
+    countryCode: {
         type: String,
         required: false
     },
-    lng:{
-        type: String,
+    lat: {
+        type: Float,
+        required: false
+    },
+    lng: {
+        type: Float,
         required: false
     },
     createAt: {

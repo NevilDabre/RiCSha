@@ -2,8 +2,8 @@ import User from "../../../server/models/User";
 
 export default {
     Query: {
-        user: async ( parent, {id}, context, info)=>{
-            return await User.findOne({ id }).exec();
+        user: async ( parent, {_id}, context, info)=>{
+            return await User.findOne({ _id }).exec();
         },
         users: async (parent, args, context, info) =>{
             const users = await User.find({})
@@ -11,7 +11,7 @@ export default {
                 .exec()
 
             return users.map(u=> ({
-                id: u.id.toString(),
+                _id: u._id.toString(),
                 firstName: u.firstName,
                 lastName: u.lastName,
                 email: u.email,
@@ -25,7 +25,6 @@ export default {
     Mutation: {
         createUser: async (parent , { user }, context, info)=>{
             const newUser = await new User({ 
-                id: user.id,
                 firstName: user.firstName,
                 lastName: user.lastName,
                 email: user.email,
@@ -40,18 +39,18 @@ export default {
                 });
             });
         },
-        updateUser: async (parent, { id, user }, context, info)=>{
+        updateUser: async (parent, { _id, user }, context, info)=>{
             return new Promise((resolve, reject)=>{
-                User.findOneAndUpdate(id, { $set: { ...user, updatedAt: new Date() } }, { new: true}).exec(
+                User.findOneAndUpdate( _id, { $set: { ...user, updatedAt: new Date() } }, { new: true}).exec(
                     (err, res) =>{
                         err? reject(err): resolve(res);
                     }
                 );
             });
         },
-        deleteUser: async (parent, {id}, context, info) =>{
+        deleteUser: async (parent, {_id}, context, info) =>{
             return new Promise((resolve, reject)=>{
-                User.findByIdAndDelete(id).exec((err, res)=>{
+                User.findByIdAndDelete(_id).exec((err, res)=>{
                     err? reject(err): resolve(res);
                 })
             })

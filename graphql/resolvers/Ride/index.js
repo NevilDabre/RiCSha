@@ -2,8 +2,8 @@ import Ride from "../../../server/models/Ride";
 
 export default {
     Query: {
-        ride: async ( parent, {id}, context, info)=>{
-            return await Ride.findOne({ id }).exec();
+        ride: async ( parent, {_id}, context, info)=>{
+            return await Ride.findOne({ _id }).exec();
         },
         rides: async (parent, args, context, info) =>{
             const rides = await Ride.find({})
@@ -11,10 +11,10 @@ export default {
                 .exec()
 
             return rides.map(r=> ({
-                id: r.id.toString(),
-                ride: r.Ride,
-                sourceAddressId: r.sourceAddressId,
-                destinationAddressId: r.destinationAddressId,
+                _id: r._id.toString(),
+                user: r.User,
+                sourceAddress: r.Address,
+                destinationAddress: r.Address,
                 vehicle: r.Vehicle,
                 type: r.type,
                 seats: r.seats,
@@ -30,10 +30,10 @@ export default {
     Mutation: {
         createRide: async (parent , { ride }, context, info)=>{
             const newRide = await new Ride({ 
-                id: ride.id,
+                _id: ride._id,
                 user: ride.User,
-                sourceAddressId: ride.sourceAddressId,
-                destinationAddressId: ride.destinationAddressId,
+                sourceAddress: ride.Address,
+                destinationAddress: ride.Address,
                 vehicle: ride.Vehicle,
                 type: ride.type,
                 seats: ride.seats,

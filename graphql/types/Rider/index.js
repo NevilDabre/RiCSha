@@ -2,7 +2,7 @@ export default `
     scalar Date
     type Rider {
         _id: String!
-        ride: [Ride!]
+        rideId: [Ride!]
         user: [User!]
         seats: Int!
         notes: String

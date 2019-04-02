@@ -38,6 +38,5 @@ export default `
         phone: Int
         picture: String
         updatedAt: Date
-
     }
     `;

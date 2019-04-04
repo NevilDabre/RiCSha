@@ -8,7 +8,7 @@ ObjectId.prototype.valueOf = function(){
 }
 
 const PostSchema = new Schema({
-    userId:{
+    user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },

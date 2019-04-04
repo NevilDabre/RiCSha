@@ -2,13 +2,12 @@ export default `
     type Post {
         _id: String!
         text: String!
-        userId: String
         user: User
     }
 
     type Query {
         post(_id: ID): Post
-        posts: [Post!]
+        posts: [Post]
     }
 
     type Mutation {
@@ -17,6 +16,6 @@ export default `
 
     input createPostInput {
         text: String
-        userId: String
+        user: String
     }
     `;

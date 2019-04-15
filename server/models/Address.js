@@ -1,7 +1,5 @@
 import mongoose from 'mongoose';
-import {
-    ObjectID
-} from 'mongodb';
+import { ObjectID } from 'mongodb';
 import mongooseFloat from 'mongoose-float';
 const Float = mongooseFloat.loadType(mongoose);
 

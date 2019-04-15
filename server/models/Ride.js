@@ -46,7 +46,7 @@ const RideSchema = new Schema({
         type: String,
         required: false
     },
-    status:{
+    status:{ //open, closed or cancelled
         type: String,
         required: true,
         defaultValue: 'open'

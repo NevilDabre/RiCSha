@@ -1,4 +1,3 @@
-import Int from 'mongoose-int32';
 import mongoose from 'mongoose';
 import { ObjectId } from 'mongodb'; 
 const Schema = mongoose.Schema;

@@ -5,12 +5,12 @@ export default {
         address: async ( parent, {_id}, context, info)=>{
             return await Address.findOne({ _id }).exec();
         },
-        addresess: async (parent, args, context, info) =>{
-            const addresss = await Address.find({})
+        addresses: async (parent, args, context, info) =>{
+            const addresses = await Address.find({})
                 .populate()
                 .exec()
 
-            return addresss.map(a=> ({
+            return addresses.map(a=> ({
                 _id: a._id.toString(),
                 placeId: a.placeId,
                 formattedAddress: a.formattedAddress,

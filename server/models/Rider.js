@@ -21,6 +21,10 @@ const RiderSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
+    address:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Address'
+    },
     seats:{
         type: Int,
         required: true,
@@ -30,7 +34,7 @@ const RiderSchema = new Schema({
         type: String,
         required: false
     },
-    status:{
+    status:{ //accepted, rejected or cancelled
         type: String,
         defaultValue:'accepted'                                                                               
     },

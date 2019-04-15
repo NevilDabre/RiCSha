@@ -6,15 +6,15 @@ export default `
     }
 
     type Query {
-        post(_id: ID): Post
+        post(_id: ID!): Post
         posts: [Post]
     }
 
     type Mutation {
-        createPost(post: createPostInput): Post
+        createPost(post: CreatePostInput): Post
     }
 
-    input createPostInput {
+    input CreatePostInput {
         text: String
         user: String
     }

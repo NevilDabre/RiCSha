@@ -2,39 +2,42 @@ export default `
     scalar Date
     type Rider {
         _id: String!
-        rideId: [Ride!]
-        user: [User!]
+        ride: Ride
+        user: User
+        address: Address
         seats: Int!
         notes: String
-        status: String!
+        status: String
         createAt: Date
         updatedAt: Date
     }
 
     type Query {
-        rider(_id: ID!):Rider!
-        riders: [Rider!]!
+        rider(_id: ID!):Rider
+        riders: [Rider]
     }
 
     type Mutation {
-        createRider(rider: CreateRiderInput): Rider!
-        updateRider(_id:String!, rider: UpdateRiderInput): Rider!
-        deleteRider(_id: String!): Rider!
+        createRider(rider: CreateRiderInput): Rider
+        updateRider(_id:String!, rider: UpdateRiderInput): Rider
+        deleteRider(_id: String!): Rider
     }
 
     input CreateRiderInput {
-        ride: [Ride!]
-        user: [User!]
+        ride: String
+        user: String
+        address: String
         seats: Int!
         notes: String
         status: String!
     }
 
     input UpdateRiderInput {
-        ride: [Ride!]
-        user: [User!]
+        ride: String
+        user: String
+        address: String
         seats: Int!
         notes: String
-        status: String!
+        status: String
     }
     `;

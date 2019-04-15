@@ -19,18 +19,18 @@ export default `
     }
 
     type Query {
-        address(_id: ID!):Address!
-        addresess: [Address!]!
+        address(_id: ID):Address
+        addresses: [Address]
     }
 
     type Mutation {
-        createAddress(address: CreateAddressInput): Address!
-        updateAddress(_id:String!, address: UpdateAddressInput): Address!
-        deleteAddress(_id: String!): Address!
+        createAddress(address: CreateAddressInput): Address
+        updateAddress(_id:String, address: UpdateAddressInput): Address
+        deleteAddress(_id: String): Address
     }
 
     input CreateAddressInput {
-        placeId: String!
+        placeId: String
         formattedAddress: String
         streetAddress: String
         locality: String
@@ -45,7 +45,7 @@ export default `
     }
 
     input UpdateAddressInput {
-        placeId: String!
+        placeId: String
         formattedAddress: String
         streetAddress: String
         locality: String

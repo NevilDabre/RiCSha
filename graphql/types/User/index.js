@@ -7,19 +7,20 @@ export default `
         email: String!
         phone: Int
         picture: String
+        address: Address
         createAt: Date
         updatedAt: Date
     }
 
     type Query {
-        user(_id: ID!):User!
-        users: [User!]!
+        user(_id: ID):User
+        users: [User]
     }
 
     type Mutation {
-        createUser(user: CreateUserInput): User!
-        updateUser(_id:String!, user: UpdateUserInput): User!
-        deleteUser(_id: String!): User!
+        createUser(user: CreateUserInput): User
+        updateUser(_id:String!, user: UpdateUserInput): User
+        deleteUser(_id: String!): User
     }
 
     input CreateUserInput {
@@ -28,6 +29,7 @@ export default `
         email: String!
         phone: Int
         picture: String
+        address: String
         createdAt: Date
     }
 
@@ -37,6 +39,7 @@ export default `
         email: String
         phone: Int
         picture: String
+        address: String
         updatedAt: Date
     }
     `;

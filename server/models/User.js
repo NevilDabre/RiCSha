@@ -28,6 +28,10 @@ const UserSchema = new Schema({
         type: String,
         required: false
     },
+    address:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Address'
+    },
     password:{
         type: String,
         required: false
